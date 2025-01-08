@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    background-color: black;      
     font-family: Arial, sans-serif;
   }
   
@@ -74,7 +75,37 @@ body {
     z-index: 2;
     transition: transform 0.5s ease-in-out;
   }
-  
+  .scale-up-center {
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 10;
+      	-webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+@-webkit-keyframes scale-up-center {
+    0% {
+      -webkit-transform: scale(0.5);
+              transform: scale(0.5);
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+  }
+  @keyframes scale-up-center {
+    0% {
+      -webkit-transform: scale(0.5);
+              transform: scale(0.5);
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+   }
+  }
   .nation span {
     position: absolute;
     top: 50%;
