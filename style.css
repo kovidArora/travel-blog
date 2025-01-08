@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .nation {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transform-origin: center; /* Default */
+    transition: transform 0.8s ease-in-out;
+  }
+  
+  .nation#nation1::before {
+    content: "";
+    background: url('destinations/us.jpg') center/cover no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  .nation#nation2::before {
+    content: "";
+    background: url('destinations/switzerland.jpg') center/cover no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  .nation#nation3::before {
+    content: "";
+    background: url('destinations/japan.jpg') center/cover no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  .nation#nation4::before {
+    content: "";
+    background: url('destinations/bali.webp') center/cover no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  .nation::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%);
+    z-index: 2;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .nation span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    z-index: 3;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+  }
+  .nation:hover::before {
+    transform: scale(1.2);  /* Increase size by 20% */
+    transition: transform 0.3s ease-in-out;  /* Smooth transition */
+}
+  .nation:hover::after {
+    transform: translateY(100%);
+    transform: scale(1.6);
+  }
+  .nation.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    transform: scale(1);
+    transition: transform 0.8s ease-in-out;
+  }
+  
+  .nation.fullscreen span {
+    font-size: 3rem;
+  }
+  
+  
