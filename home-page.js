@@ -7,7 +7,15 @@ document.querySelectorAll('.nation').forEach(div => {
         }
         // div.remove
       });
-      div.classList.add('scale-up-center');
+      div.classList.add('no-after');
+      if(div.id=='nation1')
+        div.classList.add('scale-in-tl');
+      if(div.id=='nation2')
+        div.classList.add('scale-in-tr');
+      if(div.id=='nation3')
+        div.classList.add('scale-in-bl');
+      if(div.id=='nation4')
+        div.classList.add('scale-in-br');
     });
   });
   
