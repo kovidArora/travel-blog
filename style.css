@@ -5,6 +5,10 @@ body {
   }
   
   .grid-container {
+    font-family: "Emblema One", serif;
+    font-weight: 400;
+    font-style: normal;
+    position: absolute;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -296,4 +300,44 @@ body {
   .nation.no-after::after {
     content: none; 
   } 
+  button {
+    width: 9em;
+    height: 3em;
+    border-radius: 30em;
+    font-size: 15px;
+    font-family: inherit;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 6px 6px 12px #c5c5c5,
+                -6px -6px 12px #ffffff;
+   }
+   
+   button::before {
+    content: '';
+    width: 0;
+    height: 3em;
+    border-radius: 30em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to right, #0fd850 0%, #f9f047 100%);
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+   }
+   
+   button:hover::before {
+    width: 9em;
+   }
+
+   .custom-text {
+    margin-top: 20px;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    z-index: 3;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+  }
   
