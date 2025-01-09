@@ -56,118 +56,185 @@
     opacity: 1;
   }
 }
+
 .buttons {
+  position: absolute;
   top: 50%;
-  left: 50%;
-  margin-top: 50px;
+  left: 70%;
+  transform: translate(-50%, -50%); /* Ensures the buttons are centered */
   text-align: center;
   border-radius: 30px;
 }
 
-.blob-btn {
-  z-index: 1;
+.voltage-button {
   position: relative;
-  padding: 20px 46px;
-  margin-bottom: 30px;
-  text-align: center;
-  text-transform: uppercase;
-  color: #0505A9;
-  font-size: 16px;
-  font-weight: bold;
-  background-color: transparent;
-  outline: none;
-  border: none;
-  transition: color 0.5s;
+}
+
+.voltage-button button {
+  color: white;
+  background: #0D1127;
+  padding: 1rem 3rem 1rem 3rem;
+  border-radius: 5rem;
+  border: 5px solid #5978F3;
+  font-size: 1.2rem;
+  line-height: 1em;
+  letter-spacing: 0.075em;
+  transition: background 0.3s;
+}
+
+.voltage-button button:hover {
   cursor: pointer;
-  border-radius: 30px;
+  background: #0F1C53;
 }
-.blob-btn:before {
-  content: "";
-  z-index: 1;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  border: 2px solid #0505A9;
-  border-radius: 30px;
+
+.voltage-button button:hover + svg, .voltage-button button:hover + svg + .dots {
+  opacity: 1;
 }
-.blob-btn:after {
-  content: "";
-  z-index: -2;
-  position: absolute;
-  left: 3px;
-  top: 3px;
-  width: 100%;
-  height: 100%;
-  transition: all 0.3s 0.2s;
-  border-radius: 30px;
-}
-.blob-btn:hover {
-  color: #FFFFFF;
-  border-radius: 30px;
-}
-.blob-btn:hover:after {
-  transition: all 0.3s;
-  left: 0;
-  top: 0;
-  border-radius: 30px;
-}
-.blob-btn__inner {
-  z-index: -1;
-  overflow: hidden;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 30px;
-  background: #ffffff;
-}
-.blob-btn__blobs {
-  position: relative;
+
+.voltage-button svg {
   display: block;
-  height: 100%;
-  filter: url("#goo");
-}
-.blob-btn__blob {
   position: absolute;
-  top: 2px;
-  width: 25%;
-  height: 100%;
-  background: #0505A9;
+  top: -0.75em;
+  left: -0.25em;
+  width: calc(100% + 0.5em);
+  height: calc(100% + 1.5em);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+  transition-delay: 0.1s;
+}
+
+.voltage-button svg path {
+  stroke-dasharray: 100;
+  filter: url("#glow");
+}
+
+.voltage-button svg path.line-1 {
+  stroke: #f6de8d;
+  stroke-dashoffset: 0;
+  animation: spark-1 3s linear infinite;
+}
+
+.voltage-button svg path.line-2 {
+  stroke: #6bfeff;
+  stroke-dashoffset: 500;
+  animation: spark-2 3s linear infinite;
+}
+
+.voltage-button .dots {
+  opacity: 0;
+  transition: opacity 0.3s;
+  transition-delay: 0.4s;
+}
+
+.voltage-button .dots .dot {
+  width: 1rem;
+  height: 1rem;
+  background: white;
   border-radius: 100%;
-  transform: translate3d(0, 150%, 0) scale(1.7);
-  transition: transform 0.45s;
+  position: absolute;
+  opacity: 0;
 }
-@supports (filter: url("#goo")) {
-  .blob-btn__blob {
-    transform: translate3d(0, 150%, 0) scale(1.4);
-  }
+
+.voltage-button .dots .dot-1 {
+  top: 0;
+  left: 20%;
+  animation: fly-up 3s linear infinite;
 }
-.blob-btn__blob:nth-child(1) {
-  left: 0%;
-  transition-delay: 0s;
+
+.voltage-button .dots .dot-2 {
+  top: 0;
+  left: 55%;
+  animation: fly-up 3s linear infinite;
+  animation-delay: 0.5s;
 }
-.blob-btn__blob:nth-child(2) {
+
+.voltage-button .dots .dot-3 {
+  top: 0;
+  left: 80%;
+  animation: fly-up 3s linear infinite;
+  animation-delay: 1s;
+}
+
+.voltage-button .dots .dot-4 {
+  bottom: 0;
   left: 30%;
-  transition-delay: 0.08s;
+  animation: fly-down 3s linear infinite;
+  animation-delay: 2.5s;
 }
-.blob-btn__blob:nth-child(3) {
-  left: 60%;
-  transition-delay: 0.16s;
+
+.voltage-button .dots .dot-5 {
+  bottom: 0;
+  left: 65%;
+  animation: fly-down 3s linear infinite;
+  animation-delay: 1.5s;
 }
-.blob-btn__blob:nth-child(4) {
-  left: 90%;
-  transition-delay: 0.24s;
-}
-.blob-btn:hover .blob-btn__blob {
-  transform: translateZ(0) scale(1.7);
-}
-@supports (filter: url("#goo")) {
-  .blob-btn:hover .blob-btn__blob {
-    transform: translateZ(0) scale(1.4);
+
+@keyframes spark-1 {
+  to {
+    stroke-dashoffset: -1000;
   }
 }
 
-/*# sourceMappingURL=main.css.map */
+@keyframes spark-2 {
+  to {
+    stroke-dashoffset: -500;
+  }
+}
+
+@keyframes fly-up {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.2);
+  }
+
+  5% {
+    opacity: 1;
+    transform: translateY(-1.5rem) scale(0.4);
+  }
+
+  10%, 100% {
+    opacity: 0;
+    transform: translateY(-3rem) scale(0.2);
+  }
+}
+
+@keyframes fly-down {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.2);
+  }
+
+  5% {
+    opacity: 1;
+    transform: translateY(1.5rem) scale(0.4);
+  }
+
+  10%, 100% {
+    opacity: 0;
+    transform: translateY(3rem) scale(0.2);
+  }
+}
+
+.image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: transform 2s ease-in-out, scale 2s ease-in-out;
+}
+
+img {
+  width: 100px;
+  height: auto;
+}
+
+.move-scale {
+  transform: translate(100vw, -100vh) scale(2); /* Moves and scales the airplane */
+}
+/* @keyframes mymove {
+  from {top: 80%;}
+  to {top: 5%;right:0%;}
+}
+.animate {
+  animation: mymove 2s forwards;
+} */
